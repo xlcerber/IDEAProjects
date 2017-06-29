@@ -1,5 +1,6 @@
 package ru.xlcerber;
 
+import junit.framework.Assert;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
@@ -10,6 +11,8 @@ import junit.framework.TestSuite;
 public class AppTest 
     extends TestCase
 {
+    App app = new App();
+
     /**
      * Create the test case
      *
@@ -34,5 +37,16 @@ public class AppTest
     public void testApp()
     {
         assertTrue( true );
+    }
+
+
+    public void testMain() throws Exception {
+        App.main(new String[]{"args"});
+    }
+
+
+    public void testSum() throws Exception {
+        int result = app.Sum(3, 0);
+        Assert.assertEquals(3, result);
     }
 }
