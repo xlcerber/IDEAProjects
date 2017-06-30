@@ -22,4 +22,30 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
+  
+  <build>
+        <plugins>
+            <plugin>
+            <groupId>org.asciidoctor</groupId>
+            <artifactId>asciidoctor-maven-plugin</artifactId>
+            <version>1.5.3</version>
+            <executions>
+                <execution>
+                    <id>output-html</id>
+                    <phase>generate-resources</phase>
+                    <goals>
+                        <goal>process-asciidoc</goal>
+                    </goals>
+                </execution>
+            </executions>
+            <configuration>
+                <sourceDirectory>src/docs/asciidocs</sourceDirectory>
+                <outputDirectory>target/docs</outputDirectory>
+                <backend>html</backend>
+                <doctype>book</doctype>
+            </configuration>
+        </plugin>
+        </plugins>
+    </build>
+  
 </project>
