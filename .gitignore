@@ -3,6 +3,7 @@ target
 .settings
 .classpath
 .project
+.asciidoctor
 *.class
 # Package Files #
 *.jar
@@ -10,6 +11,7 @@ target
 *.ear
 .idea
 *.swp
+*.png
 datanucleus.log
 /bin/
 /bin/
