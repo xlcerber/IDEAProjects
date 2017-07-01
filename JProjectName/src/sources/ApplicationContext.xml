@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd"
+       default-lazy-init="true"
+       default-init-method="init">
+
+    <!--   <import resource="AdditionApplicationContext.xml"/>
+       <context:property-override location="classpath:override.properties"/>   -->
+
+    <!--    <context:component-scan base-package="HelloWorld" />  -->
+
+       <bean id="point" class="HelloWorld.Point">
+              <property name="x" value="2"/>
+              <property name="y" value="5"/>
+       </bean>
+
+       <bean id="shape" name="rectangle" class="HelloWorld.Rectangle" scope="prototype" autowire="byType">
+           <!--   <constructor-arg index="0" value="12"/>
+              <constructor-arg index="1" value="4"/>
+           <constructor-arg index ="0" ref="point" />
+           <constructor-arg index ="1" ref="point" />-->
+           <!-- <property name="point" ref="point"/> -->
+
+
+       </bean>
+
+       <bean id="t1000" name="circle" class="HelloWorld.Circle">
+              <constructor-arg index="0" value="1"/>
+       </bean>
+
+       <!-- a stateful bean deployed as a prototype (non-singleton) -->
+       <bean id="command" class="HelloWorld.AsyncCommand" scope="prototype">
+              <!-- inject dependencies here as required -->
+       </bean>
+
+       <!-- commandProcessor uses statefulCommandHelper -->
+       <bean id="commandManager" class="HelloWorld.CommandManager">
+              <lookup-method name="createCommand" bean="command"/>
+       </bean>
+
+       <bean class="HelloWorld.MethodsBeanPostProcessor"/>
+
+</beans>
