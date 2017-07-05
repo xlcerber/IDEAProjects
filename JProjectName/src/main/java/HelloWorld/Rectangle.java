@@ -1,11 +1,11 @@
 package HelloWorld;
 
-public class Rectangle implements Shape{
-    double height = 1;
-    double width = 1;
+public class Rectangle implements Shape {
+    private double  height = 1;
+    private double width = 1;
 
 
-    Point point;
+    private Point point;
 
     public void setPoint(Point point) {
         this.point = point;
@@ -25,12 +25,12 @@ public class Rectangle implements Shape{
         this.width = width;
     }
 */
-    /*
+
     Rectangle(Point topLeft, Point bottomRight) {
-        this.height = Math.abs(point.x + point.x);
-        this.width = Math.abs(point.y + point.y);
+        this.height = Math.abs(topLeft.x - bottomRight.x);
+        this.width = Math.abs(topLeft.y - bottomRight.y);
     }
-*/
+
 
     public void setHeight(double height) {
         this.height = height;
@@ -40,10 +40,10 @@ public class Rectangle implements Shape{
         this.width = width;
     }
 
-    public double Square() {
+    public double square() {
         //System.out.println(point.x + " " + point.y);
-        //return height * width;
-        return point.x * point.y;
+        return height * width;
+        //return point.x * point.y;
     }
 
 

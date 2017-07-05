@@ -15,7 +15,7 @@ public class Circle implements Shape {
     }
 
     @Override
-    public double Square() {
+    public double square() {
         return Math.PI * Math.pow(r, 2);
     }
 }

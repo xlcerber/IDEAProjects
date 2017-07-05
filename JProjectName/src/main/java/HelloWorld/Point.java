@@ -4,20 +4,21 @@ package HelloWorld;
  * Created by User on 23.09.2016.
  */
 public class Point {
-    double x = 0;
-    double y = 0;
+    private double  x = 0;
+    private double y = 0;
 
-    public void setX(double x) {
+    public void setX(final double x) {
         this.x = x;
     }
 
-    public void setY(double y) {
+    public void setY(final double y) {
         this.y = y;
     }
 
-    Point() {}
+    Point() {
+    }
 
-    Point (double x, double y){
+    Point(final double x, final double y) {
         this.x = x;
         this.y = y;
     }

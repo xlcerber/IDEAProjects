@@ -9,6 +9,6 @@ package HelloWorld;
     }
 
     interface Shape {
-        double Square();
+        double square();
     }
 
