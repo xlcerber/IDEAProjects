@@ -17,20 +17,25 @@
         <constructor-arg index="0" value="1"/>
     </bean>
 
+
+    <!-- С помощью property передаем значение в setter.
+         Значение name должно соответствовать имени переменной. -->
     <bean id="point" class="HelloWorld.Point">
         <property name="x" value="2"/>
         <property name="y" value="5"/>
     </bean>
 
-       <bean id="shape" name="rectangle" class="HelloWorld.Rectangle" scope="prototype" autowire="byType">
-           <!--   <constructor-arg index="0" value="12"/>
-              <constructor-arg index="1" value="4"/>
-           <constructor-arg index ="0" ref="point" />
-           <constructor-arg index ="1" ref="point" />-->
-           <!-- <property name="point" ref="point"/> -->
-       </bean>
 
-    <!-- В конструктор класса HelloWorld.Rectangle передаем два параметра.
+   <bean id="shape" name="rectangle" class="HelloWorld.Rectangle" scope="prototype" autowire="byType">
+       <!--
+       <constructor-arg index="0" value="12"/>
+       <constructor-arg index="1" value="4"/>
+       <constructor-arg index ="0" ref="point" />
+       <constructor-arg index ="1" ref="point" />
+       <property name="point" ref="point"/> -->
+   </bean>
+
+    <!-- В конструктор класса HelloWorld.Rectangle с помощью constructor-arg передаем два параметра.
          Параметры являются переменными класса HelloWorld.Point и задаются через bean id="point"  -->
     <bean id="shape2" name="rectangle2" class="HelloWorld.Rectangle">
         <constructor-arg index ="0" ref="point"/>
