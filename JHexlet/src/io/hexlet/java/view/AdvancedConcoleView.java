@@ -1,10 +1,10 @@
 package io.hexlet.java.view;
 
-import io.hexlet.java.controller.Game;
+import io.hexlet.java.controller.GameController;
 
 public class AdvancedConcoleView extends ConsoleView {
 
-    public AdvancedConcoleView(Game game) {
+    public AdvancedConcoleView(GameController game) {
         super(game);
     }
 

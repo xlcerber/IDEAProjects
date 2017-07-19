@@ -1,11 +1,11 @@
 package io.hexlet.java.view;
 
-import io.hexlet.java.controller.Game;
+import io.hexlet.java.controller.GameController;
 
 public class ConsoleView {
-	protected final Game game;
+	protected final GameController game;
 
-	public ConsoleView(final Game game) {
+	public ConsoleView(final GameController game) {
 		this.game = game;
 	}
 
