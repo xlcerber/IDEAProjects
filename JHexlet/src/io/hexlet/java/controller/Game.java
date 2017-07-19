@@ -1,6 +1,6 @@
 package io.hexlet.java.controller;
 
-import io.hexlet.java.Player;
+import io.hexlet.java.model.Player;
 
 public class Game {
 	public static final String GAME_NAME = "XO";
