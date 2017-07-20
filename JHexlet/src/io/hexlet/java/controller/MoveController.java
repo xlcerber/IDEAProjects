@@ -8,17 +8,16 @@ public class MoveController {
     public boolean applyFigure(final Field field,
                                final Point point,
                                final String figure) {
-        // BEGIN (write your solution here)
+
         if (!checkCoordinate(point.x) || !checkCoordinate(point.y)) {
             return false;
         }
 
-        if (field.figures[point.x][point.y] != null) return false;
-
-        field.figures[point.x][point.y] = figure;
+//        if (field.figures[point.x][point.y] != null) return false;
+//
+//        field.figures[point.x][point.y] = figure;
 
         return true;
-        // END
     }
 
     // BEGIN (write your solution here) //You may want to check the coordinates in a separate method ???

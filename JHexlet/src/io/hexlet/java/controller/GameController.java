@@ -1,20 +1,40 @@
 package io.hexlet.java.controller;
 
+import io.hexlet.java.model.Board;
 import io.hexlet.java.model.Figure;
 import io.hexlet.java.model.Player;
 
 public class GameController {
-	public static final String GAME_NAME = "XO";
+	private final String gameName;
+
+	private final Board board;
 
 	private static final int MIN_COORDINATE = 0;
 
 	private static final int MAX_COORDINATE = 3;
 
-	private Player[] players = new Player[] {new Player("Max", new Figure("0")),
-			new Player("Leo",new Figure("X"))};
+	private final Player[] players;
+
+	public GameController(final String gameName, final Player[] players, Board board) {
+		this.players = players;
+
+		this.board = board;
+
+		if (gameName == null || gameName.isEmpty()) {
+			this.gameName = "XO";
+		} else {
+			this.gameName = gameName;
+		}
+
+
+	}
+
+	public Board getBoard() {
+		return board;
+	}
 
 	public String getGameName() {
-		return GAME_NAME;
+		return gameName;
 	}
 
 	public Player currentPlayer() {

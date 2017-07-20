@@ -13,6 +13,7 @@ public class Figure {
     int[] x10 = new int[]{2, 3, 4};
 
     int x[][] = new int[][]{{2}, {3, 4}};
+
     public Figure(final String figure) {
         this.figure = figure;
     }
