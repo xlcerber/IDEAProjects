@@ -11,14 +11,12 @@ public class Main {
 
     public static void main(String... args) {
 
-        String[][] figures = new String[3][3];
-        figures[0][0] = "X";
-//        figures[1][1] = "O";
+        String [][] figures = new String [][] {{"X",null,"O"},{null,"O",null},{"O",null,null}};
 
-        Field field = new Field(figures);
-       System.out.println(field.getSize());
-
-
+        final Field field = new Field(figures);
+        final WinnerController winnerController = new WinnerController();
+        System.out.println(winnerController.getWinner(field));
+        
         Board board = new Board();
 //        board.initArray();
 //        board.showBoard();
