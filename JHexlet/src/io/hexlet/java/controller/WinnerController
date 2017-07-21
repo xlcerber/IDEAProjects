@@ -11,13 +11,13 @@ public class WinnerController {
                 String winner;
 
                 winner = getWinnerByCheckingAllRow(field);
-                if (!winner.isEmpty()) return winner;
+                if (winner != null) return winner;
 
                 winner = getWinnerByCheckingAllColumn(field);
-                if (!winner.isEmpty()) return winner;
+                if (winner != null) return winner;
 
                 winner = getWinnerByCheckingDiagonals(field);
-                if (!winner.isEmpty()) return winner;
+                if (winner != null) return winner;
 
                 return null;
         }
@@ -75,15 +75,15 @@ public class WinnerController {
                 int num = 1;
 
                 String figureUp = field.getFigure(new Point(0,0));
-                String figureDown = field.getFigure(new Point(size,size));
+                String figureDown = field.getFigure(new Point(0 ,size - 1));
 
-                while (num < size || (figureUp != null && figureDown != null)) {
+                while (num < size && (figureUp != null || figureDown != null) ) {
 
                         if (figureUp == null || !figureUp.equals(field.getFigure(new Point(num,num)))) {
                                 figureUp = null;
                         }
 
-                        if (figureDown == null || !figureDown.equals(field.getFigure(new Point(size - num, size - num)))) {
+                        if (figureDown == null || !figureDown.equals(field.getFigure(new Point(num, (size - 1) - num)))) {
                                 figureDown = null;
                         }
 
@@ -91,8 +91,8 @@ public class WinnerController {
 
                 };
 
-                if (!figureUp.isEmpty()) winner = figureUp;
-                if (!figureDown.isEmpty()) winner = figureDown;
+                if (figureUp != null) winner = figureUp;
+                if (figureDown != null) winner = figureDown;
 
                 return winner;
         }
