@@ -2,6 +2,7 @@ package io.hexlet.java;
 
 import io.hexlet.java.controller.CurrentMoveController;
 import io.hexlet.java.controller.GameController;
+import io.hexlet.java.controller.WinnerController;
 import io.hexlet.java.model.*;
 import io.hexlet.java.view.AdvancedConcoleView;
 import io.hexlet.java.view.ConsoleView;
