@@ -1,35 +1,116 @@
-Задание
+package io.hexlet.java.controller;
 
-Сегодня Вам предстоит решить достаточно сложное задание. Необходимо реализовать метод, который проверяет наличие победителя на поле!
+import io.hexlet.java.model.Field;
+import io.hexlet.java.model.Point;
 
-Этот метод расположен в классе: WinnerController
+public class WinnerController {
 
-Для проверки выиграша Вам необходимо:
 
-проверить каждый ряд и, если в ряду все три фигурки одинаковые, то Вы нашли победителя (при этом не забудьте проверить ситуацию, когда все три фигурки null);
-проверить каждый столбец;
-проверить две диагонали.
-При этом, если победитель не найден, то Вам необходимо вернуть null. Если победитель найден - возвращаем фигурку "Х" или "О" соответственно.
+        public String getWinner(final Field field) {
 
-Задание достаточно трудное и Вы можете нарваться на бомбу NullPointerException во многих местах. Если Вам будет достаточно трудно, то Вы можете воспользоваться подсказкой (но лучше решить задачу самостоятельно).
+                String winner;
 
-Подсказка
+                winner = getWinnerByCheckingAllRow(field);
+                if (!winner.isEmpty()) return winner;
 
-Реализация проверки выиграша по всем строкам:
+                winner = getWinnerByCheckingAllColumn(field);
+                if (!winner.isEmpty()) return winner;
 
-            for (int i = 0; i < field.getSize(); i++) {
-            p1.x = 0;
-            p2.x = 1;
-            p3.x = 2;
+                winner = getWinnerByCheckingDiagonals(field);
+                if (!winner.isEmpty()) return winner;
 
-            p1.y = i;
-            p2.y = i;
-            p3.y = i;
+                return null;
+        }
 
-            if (field.getFigure(p1) != null && field.getFigure(p2) != null 
-                    && field.getFigure(p3) != null &&
-                    field.getFigure(p1).equals(field.getFigure(p2)) &&
-                    field.getFigure(p1).equals(field.getFigure(p3))) {
-                        return field.getFigure(p1);
-                    }
-            }
+        public String getWinnerByCheckingAllRow(final Field field){
+
+                String winner;
+
+                for (int rowNum = 0; rowNum < field.getSize(); rowNum++) {
+                        winner =  getWinnerByCheckingRow(field, rowNum);
+                        if (winner != null) {return winner;}
+                }
+                return null;
+        }
+
+        public String getWinnerByCheckingRow(final Field field, final int rowNum) {
+
+                String figure = field.getFigure(new Point(0, rowNum));
+
+                for (int colNum = 1; colNum < field.getSize(); colNum++) {
+                        if (figure == null || !figure.equals(field.getFigure(new Point(colNum, rowNum)))) {
+                                return null;
+                        }
+                }
+                return figure;
+        }
+
+        public String getWinnerByCheckingAllColumn(final Field field){
+
+                String winner;
+
+                for (int colNum = 0; colNum < field.getSize(); colNum++) {
+                        winner =  getWinnerByCheckingColumn(field, colNum);
+                        if (winner != null) {return winner;}
+                }
+                return null;
+        }
+
+        public String getWinnerByCheckingColumn(final Field field, final int colNum) {
+
+                String figure = field.getFigure(new Point(colNum,0));
+
+                for (int rowNum = 1; rowNum < field.getSize(); rowNum++) {
+                        if (figure == null || !figure.equals(field.getFigure(new Point(colNum,rowNum)))) {
+                                return null;
+                        }
+                }
+                return figure;
+        }
+
+        public String getWinnerByCheckingDiagonals(final Field field){
+
+                String winner = null;
+                int size = field.getSize();
+                int num = 1;
+
+                String figureUp = field.getFigure(new Point(0,0));
+                String figureDown = field.getFigure(new Point(size,size));
+
+                while (num < size || (figureUp != null && figureDown != null)) {
+
+                        if (figureUp == null || !figureUp.equals(field.getFigure(new Point(num,num)))) {
+                                figureUp = null;
+                        }
+
+                        if (figureDown == null || !figureDown.equals(field.getFigure(new Point(size - num, size - num)))) {
+                                figureDown = null;
+                        }
+
+                        num ++;
+
+                };
+
+                if (!figureUp.isEmpty()) winner = figureUp;
+                if (!figureDown.isEmpty()) winner = figureDown;
+
+                return winner;
+        }
+
+}
+
+//        p1.x = 0;
+//        p2.x = 1;
+//        p3.x = 2;
+
+//        p1.y = i;
+//        p2.y = i;
+//        p3.y = i;
+
+//        if (field.getFigure(p1) != null && field.getFigure(p2) != null
+//        && field.getFigure(p3) != null &&
+//        field.getFigure(p1).equals(field.getFigure(p2)) &&
+//        field.getFigure(p1).equals(field.getFigure(p3))) {
+//        return field.getFigure(p1);
+
+
