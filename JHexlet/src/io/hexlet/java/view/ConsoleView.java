@@ -56,6 +56,7 @@ public class ConsoleView {
 		// END
 	}
 
+
 	void generateSeparator(final StringBuilder sb) {
 		// BEGIN (write your solution here)
 		sb.append("~~~~~~~~~~~\n");

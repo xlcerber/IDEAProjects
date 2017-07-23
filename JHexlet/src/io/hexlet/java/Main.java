@@ -23,6 +23,7 @@ public class Main {
 //        board.initArray();
 //        board.showBoard();
 
+
         Player[] players = new Player[] {new Player("Max", Figure.O),
                 new Player("Leo",Figure.X)};
 
