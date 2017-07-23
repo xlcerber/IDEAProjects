@@ -1,6 +1,8 @@
 package io.hexlet.java.model;
 
-public class Figure {
+public enum Figure {
+
+    X("X"),O("O");
 
     private final String figure;
 
@@ -14,7 +16,7 @@ public class Figure {
 
     int x[][] = new int[][]{{2}, {3, 4}};
 
-    public Figure(final String figure) {
+    Figure(final String figure) {
         this.figure = figure;
     }
 
@@ -22,8 +24,8 @@ public class Figure {
         return figure;
     }
 
-    @Override
-    public String toString() {
-        return this.figure;
-    }
+//    @Override
+//    public String toString() {
+//        return this.figure;
+//    }
 }

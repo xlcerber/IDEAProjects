@@ -1,6 +1,7 @@
 package io.hexlet.java.view;
 
 import io.hexlet.java.controller.GameController;
+import io.hexlet.java.model.*;
 import io.hexlet.java.model.Player;
 
 import java.util.InputMismatchException;
@@ -15,6 +16,50 @@ public class ConsoleView {
 
 	public void showGameName() {
 		System.out.println(gameController.getGameName());
+	}
+
+	public void show(final Game game) {
+		final Field field = game.getField();
+		final StringBuilder fieldBuilder = new StringBuilder();
+		for (int x = 0; x < field.getSize(); x++) {
+			if (x != 0)
+				generateSeparator(fieldBuilder);
+			generateLine(field, x, fieldBuilder);
+		}
+		System.out.println(fieldBuilder.toString());
+	}
+
+	public boolean move(final Game game) {
+		return true;
+	}
+
+	void generateLine(final Field field,
+					  final int x,
+					  final StringBuilder sb) {
+		// BEGIN (write your solution here)
+
+		for (int y = 0; y < field.getSize(); y ++ ) {
+			String figure;
+			try {
+				figure = field.getFigure(new Point(y, x)).toString();
+			}
+			catch (Exception e ) {
+				figure = " ";
+			};
+
+			sb.append(" ").append(figure).append(" ");
+
+			if (y != field.getSize() - 1) {
+				sb.append("|");
+			} else sb.append("\n");
+		}
+		// END
+	}
+
+	void generateSeparator(final StringBuilder sb) {
+		// BEGIN (write your solution here)
+		sb.append("~~~~~~~~~~~\n");
+		// END
 	}
 
 	public void showPlayers() {

@@ -9,8 +9,8 @@ public class Board {
     private Figure[][] figures = new Figure[SIZE_FIELD][SIZE_FIELD];
 
     public void initArray() {
-        figures[0][0] = new Figure("X");
-        figures[1][1] = new Figure("O");
+        figures[0][0] = Figure.X;
+        figures[1][1] = Figure.O;
     }
 
     public void showBoard() {
