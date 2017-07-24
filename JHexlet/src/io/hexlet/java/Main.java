@@ -51,6 +51,11 @@ public class Main {
         final ConsoleView consoleView = new ConsoleView(gameController);
         consoleView.show(game);
 
+        Str s = new Str();
+        System.out.println(s.task1("Input string"));
+        System.out.println(s.task2("input string to the method test2"));
+        System.out.println(s.task3("input string to the method test2", 't'));
+
 
 
 
