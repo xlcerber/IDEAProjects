@@ -7,8 +7,13 @@ import io.hexlet.java.model.Player;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class ConsoleView {
+public class ConsoleView implements ICoordinateGetter {
 	protected final GameController gameController;
+
+	@Override
+	public Point getMoveCoordinate(final Field field) {
+		return new Point(0, 0);
+	}
 
 	public ConsoleView(final GameController gameController) {
 		this.gameController = gameController;
@@ -36,7 +41,6 @@ public class ConsoleView {
 	void generateLine(final Field field,
 					  final int x,
 					  final StringBuilder sb) {
-		// BEGIN (write your solution here)
 
 		for (int y = 0; y < field.getSize(); y ++ ) {
 			String figure;
@@ -53,7 +57,6 @@ public class ConsoleView {
 				sb.append("|");
 			} else sb.append("\n");
 		}
-		// END
 	}
 
 

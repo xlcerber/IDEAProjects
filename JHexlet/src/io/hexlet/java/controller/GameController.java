@@ -50,8 +50,6 @@ public class GameController {
 			return false;
 		}
 
-		//TODO
-
 		return true;
 	}
 
