@@ -3,26 +3,24 @@ package io.hexlet.java.controller;
 import io.hexlet.java.model.Field;
 import io.hexlet.java.model.Figure;
 import io.hexlet.java.model.Point;
+import io.hexlet.java.model.exceptions.AlreadyOccupiedException;
+import io.hexlet.java.model.exceptions.InvalidPointException;
 
 public class MoveController {
 
-    public boolean applyFigure(final Field field,
+    public static void applyFigure(final Field field,
                                final Point point,
-                               final Figure figure) {
+                               final Figure figure) throws AlreadyOccupiedException, InvalidPointException {
 
-        if (!checkCoordinate(point.getX()) || !checkCoordinate(point.getY())) {
-            return false;
+        if (!field.checkCoordinate(point.getX()) || !field.checkCoordinate(point.getY())) {
+            throw new InvalidPointException();
+        }
+
+        if (field.getFigure(point) != null) {
+            throw new AlreadyOccupiedException();
         }
 
         field.setFigure(point, figure);
-        return true;
     }
 
-    private static boolean checkCoordinate (final int coordinate) {
-        if (coordinate < 0) {
-            return false;
-        }
-
-        return true;
-    }
 }

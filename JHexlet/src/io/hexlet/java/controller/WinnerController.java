@@ -3,6 +3,7 @@ package io.hexlet.java.controller;
 import io.hexlet.java.model.Field;
 import io.hexlet.java.model.Figure;
 import io.hexlet.java.model.Point;
+import io.hexlet.java.model.exceptions.InvalidPointException;
 
 public class WinnerController {
 
@@ -36,14 +37,20 @@ public class WinnerController {
 
         public String getWinnerByCheckingRow(final Field field, final int rowNum) {
 
-                Figure figure = field.getFigure(new Point(0, rowNum));
+                try {
+                        Figure figure = field.getFigure(new Point(0, rowNum));
 
-                for (int colNum = 1; colNum < field.getSize(); colNum++) {
-                        if (figure == null || !figure.equals(field.getFigure(new Point(colNum, rowNum)))) {
-                                return null;
+                        for (int colNum = 1; colNum < field.getSize(); colNum++) {
+                                if (figure == null || !figure.equals(field.getFigure(new Point(colNum, rowNum)))) {
+                                        return null;
+                                }
                         }
+
+                        return figure.toString();
+                } catch (InvalidPointException e) {
+                        System.out.println(e.getMessage());
+                        return null;
                 }
-                return figure.toString();
         }
 
         public String getWinnerByCheckingAllColumn(final Field field){
@@ -59,14 +66,19 @@ public class WinnerController {
 
         public String getWinnerByCheckingColumn(final Field field, final int colNum) {
 
-                Figure figure = field.getFigure(new Point(colNum,0));
+                try {
+                        Figure figure = field.getFigure(new Point(colNum, 0));
 
-                for (int rowNum = 1; rowNum < field.getSize(); rowNum++) {
-                        if (figure == null || !figure.equals(field.getFigure(new Point(colNum,rowNum)))) {
-                                return null;
+                        for (int rowNum = 1; rowNum < field.getSize(); rowNum++) {
+                                if (figure == null || !figure.equals(field.getFigure(new Point(colNum, rowNum)))) {
+                                        return null;
+                                }
                         }
+                        return figure.toString();
+                } catch (InvalidPointException e) {
+                        System.out.println(e.getMessage());
+                        return null;
                 }
-                return figure.toString();
         }
 
         public String getWinnerByCheckingDiagonals(final Field field){
@@ -74,23 +86,30 @@ public class WinnerController {
                 String winner = null;
                 int size = field.getSize();
                 int num = 1;
+                Figure figureUp = null;
+                Figure figureDown = null;
 
-                Figure figureUp = field.getFigure(new Point(0,0));
-                Figure figureDown = field.getFigure(new Point(0 ,size - 1));
+                try {
+                        figureUp = field.getFigure(new Point(0, 0));
+                        figureDown = field.getFigure(new Point(0, size - 1));
 
-                while (num < size && (figureUp != null || figureDown != null) ) {
+                        while (num < size && (figureUp != null || figureDown != null)) {
 
-                        if (figureUp == null || !figureUp.equals(field.getFigure(new Point(num,num)))) {
-                                figureUp = null;
-                        }
+                                if (figureUp == null || !figureUp.equals(field.getFigure(new Point(num, num)))) {
+                                        figureUp = null;
+                                }
 
-                        if (figureDown == null || !figureDown.equals(field.getFigure(new Point(num, (size - 1) - num)))) {
-                                figureDown = null;
-                        }
+                                if (figureDown == null || !figureDown.equals(field.getFigure(new Point(num, (size - 1) - num)))) {
+                                        figureDown = null;
+                                }
 
-                        num ++;
+                                num++;
 
-                };
+                        };
+
+                } catch (InvalidPointException e) {
+                        System.out.println(e.getMessage());
+                }
 
                 if (figureUp != null) winner = figureUp.toString();
                 if (figureDown != null) winner = figureDown.toString();
