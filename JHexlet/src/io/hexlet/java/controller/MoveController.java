@@ -12,14 +12,6 @@ public class MoveController {
                                final Point point,
                                final Figure figure) throws AlreadyOccupiedException, InvalidPointException {
 
-        if (!field.checkCoordinate(point.getX()) || !field.checkCoordinate(point.getY())) {
-            throw new InvalidPointException();
-        }
-
-        if (field.getFigure(point) != null) {
-            throw new AlreadyOccupiedException();
-        }
-
         field.setFigure(point, figure);
     }
 
