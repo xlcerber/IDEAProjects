@@ -3,11 +3,9 @@ package io.hexlet.java.model;
 import io.hexlet.java.model.exceptions.AlreadyOccupiedException;
 import io.hexlet.java.model.exceptions.InvalidPointException;
 
-import java.util.Arrays;
+public class Field<T> {
 
-public class Field {
-
-    private final Figure[][] field;
+    private final T[][] field;
 
     private static final int MIN_COORDINATE = 0;
 
@@ -15,14 +13,14 @@ public class Field {
 
     public Field(final int filedSize) {
         this.filedSize = filedSize;
-        field = new Figure[filedSize][filedSize];
+        field = (T[][]) new Object[filedSize][filedSize];
     }
 
     public int getSize() {
         return filedSize;
     }
 
-    public Figure getFigure(final Point point) throws InvalidPointException
+    public T getFigure(final Point point) throws InvalidPointException
     {
         if ( !checkCoordinate( point ) )  {
             throw new InvalidPointException();
@@ -31,7 +29,7 @@ public class Field {
         return field[point.getX()][point.getY()];
     }
 
-    public void setFigure(final Point point, final Figure figure) throws InvalidPointException, AlreadyOccupiedException
+    public void setFigure(final Point point, final T figure) throws InvalidPointException, AlreadyOccupiedException
     {
         if ( !checkCoordinate(point)) {
             throw new InvalidPointException();
@@ -42,6 +40,7 @@ public class Field {
         }
         field[point.getX()][point.getY()] = figure;
     }
+
 
     private boolean checkCoordinate(Point point) {
 

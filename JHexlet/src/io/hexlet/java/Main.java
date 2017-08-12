@@ -1,14 +1,11 @@
 package io.hexlet.java;
 
-import io.hexlet.java.controller.CurrentMoveController;
 import io.hexlet.java.controller.MoveController;
 import io.hexlet.java.controller.GameController;
-import io.hexlet.java.controller.WinnerController;
 import io.hexlet.java.model.*;
 import io.hexlet.java.model.Figure;
 import io.hexlet.java.model.exceptions.AlreadyOccupiedException;
 import io.hexlet.java.model.exceptions.InvalidPointException;
-import io.hexlet.java.view.AdvancedConcoleView;
 import io.hexlet.java.view.ConsoleView;
 
 
@@ -17,9 +14,9 @@ public class Main {
     public static void main(String... args) {
 
 //        Figure[][] figures = new Figure [][] {{Figure.X, null, Figure.O},{null, Figure.O, null},{Figure.O,null,null}};
-//        final Field field = new Field(figures);
+//        final Field<Figure> field = new Field(figures);
 
-        final Field field = new Field(3);
+        final Field<Figure> field = new Field<>(3);
 //        final WinnerController winnerController = new WinnerController();
 //        System.out.println(winnerController.getWinner(field));
 //

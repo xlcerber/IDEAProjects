@@ -7,7 +7,7 @@ import java.util.Random;
 
 public class AICoordinateGetter implements ICoordinateGetter {
 
-    public Point getMoveCoordinate(final Field field) {
+    public Point getMoveCoordinate(final Field<Figure> field) {
         // BEGIN (write your solution here)
 
 

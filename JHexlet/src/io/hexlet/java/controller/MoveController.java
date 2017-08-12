@@ -8,7 +8,7 @@ import io.hexlet.java.model.exceptions.InvalidPointException;
 
 public class MoveController {
 
-    public static void applyFigure(final Field field,
+    public static void applyFigure(final Field<Figure> field,
                                final Point point,
                                final Figure figure) throws AlreadyOccupiedException, InvalidPointException {
 

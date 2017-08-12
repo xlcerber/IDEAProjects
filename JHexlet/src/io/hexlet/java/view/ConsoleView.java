@@ -11,7 +11,7 @@ public class ConsoleView implements ICoordinateGetter {
 	protected final GameController gameController;
 
 	@Override
-	public Point getMoveCoordinate(final Field field) {
+	public Point getMoveCoordinate(final Field<Figure> field) {
 		return new Point(0, 0);
 	}
 
@@ -24,7 +24,7 @@ public class ConsoleView implements ICoordinateGetter {
 	}
 
 	public void show(final Game game) {
-		final Field field = game.getField();
+		final Field<Figure> field = game.getField();
 		final StringBuilder fieldBuilder = new StringBuilder();
 		for (int x = 0; x < field.getSize(); x++) {
 			if (x != 0)
@@ -38,7 +38,7 @@ public class ConsoleView implements ICoordinateGetter {
 		return true;
 	}
 
-	void generateLine(final Field field,
+	void generateLine(final Field<Figure> field,
 					  final int x,
 					  final StringBuilder sb) {
 

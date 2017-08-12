@@ -1,12 +1,12 @@
 package io.hexlet.java.model;
 
-public class GameBuilder {
+public class GameBuilder<F> {
 
     public Player player1;
 
     public Player player2;
 
-    public Field field;
+    public Field<F> field;
 
     public String name;
 
@@ -20,7 +20,7 @@ public class GameBuilder {
         return this;
     }
 
-    public GameBuilder field(Field field) {
+    public GameBuilder field(Field<F> field) {
         this.field = field;
         return this;
     }
@@ -39,7 +39,7 @@ public class GameBuilder {
         return player2;
     }
 
-    public Field getField() {
+    public Field<F> getField() {
         return field;
     }
 

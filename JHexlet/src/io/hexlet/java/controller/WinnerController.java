@@ -8,7 +8,7 @@ import io.hexlet.java.model.exceptions.InvalidPointException;
 public class WinnerController {
 
 
-        public String getWinner(final Field field) {
+        public String getWinner(final Field<Figure> field) {
 
                 String winner;
 
@@ -24,7 +24,7 @@ public class WinnerController {
                 return null;
         }
 
-        public String getWinnerByCheckingAllRow(final Field field){
+        public String getWinnerByCheckingAllRow(final Field<Figure> field){
 
                 String winner;
 
@@ -35,7 +35,7 @@ public class WinnerController {
                 return null;
         }
 
-        public String getWinnerByCheckingRow(final Field field, final int rowNum) {
+        public String getWinnerByCheckingRow(final Field<Figure> field, final int rowNum) {
 
                 try {
                         Figure figure = field.getFigure(new Point(0, rowNum));
@@ -53,7 +53,7 @@ public class WinnerController {
                 }
         }
 
-        public String getWinnerByCheckingAllColumn(final Field field){
+        public String getWinnerByCheckingAllColumn(final Field<Figure> field){
 
                 String winner;
 
@@ -64,7 +64,7 @@ public class WinnerController {
                 return null;
         }
 
-        public String getWinnerByCheckingColumn(final Field field, final int colNum) {
+        public String getWinnerByCheckingColumn(final Field<Figure> field, final int colNum) {
 
                 try {
                         Figure figure = field.getFigure(new Point(colNum, 0));
@@ -81,7 +81,7 @@ public class WinnerController {
                 }
         }
 
-        public String getWinnerByCheckingDiagonals(final Field field){
+        public String getWinnerByCheckingDiagonals(final Field<Figure> field){
 
                 String winner = null;
                 int size = field.getSize();
