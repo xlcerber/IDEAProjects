@@ -3,15 +3,24 @@ package com.epam;
 import lombok.SneakyThrows;
 
 import java.lang.invoke.SerializedLambda;
+import java.util.HashMap;
+
 
 public class ObjectFactory {
     private static ObjectFactory ourInstance = new ObjectFactory();
-    private Config config = new JavaConfig("com.epam");
+    //private Config config = new JavaConfig("com.epam");
+    private Config config;
 
     public static ObjectFactory getInstance() {return ourInstance;};
 
     private ObjectFactory() {
+        // Так можно писать в 9-ой jave
+        //new JavaConfig("com.epam", HashMap<> (Map.of(Policeman.class, AngryPoliceman.class)));
 
+        HashMap<Class, Class> configMap = new HashMap<>();
+        configMap.put(Policeman.class, PolicemanImpl.class);
+
+        config = new JavaConfig("com.epam", configMap);
     };
 
     // В spring'e называется getBean
