@@ -1,4 +1,7 @@
 package ru.xlcerber.blog.repo;
 
-public interface PostRepository {
+import org.springframework.data.repository.CrudRepository;
+import ru.xlcerber.blog.models.Post;
+
+public interface PostRepository extends CrudRepository <Post, Long> {
 }
